@@ -17,15 +17,16 @@ express()
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM test_table');
-      const results = { 'Results:': (result) ? result.rows : null };
+      const results = { 'results': (result) ? result.rows : null };
       res.render('pages/db', results);
       client.release();
     }
     catch (err){
       console.error(err);
-      res.send("Error: " + err)
+      res.send(err)
     }
   })
+
   .get('/cool', (rec,res) => res.send(cool()))
   .get('/times', (req, res) => res.send(showTimes()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
