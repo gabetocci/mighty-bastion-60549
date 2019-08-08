@@ -26,7 +26,6 @@ express()
       res.send(err)
     }
   })
-
   .get('/cool', (rec,res) => res.send(cool()))
   .get('/times', (req, res) => res.send(showTimes()))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
