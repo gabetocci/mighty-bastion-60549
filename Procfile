@@ -1,1 +1,1 @@
-web: node index-graphql.js
+web: npm run start

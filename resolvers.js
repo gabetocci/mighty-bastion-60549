@@ -1,39 +1,58 @@
-/* TODO Connect to pg database and build resolver data
-const { Pool } = require('pg');
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true
-});
-
-let r;
-
-try {
-    const client = pool.connect()
-    const result = client.query('SELECT * FROM test_table');
-    const results = { 'results': (result) ? result.rows : null };
-    r = results;
-    client.release();
-} catch (err){
-    console.error(err);
-}
-*/
-
-// Some fake data
-const books = [
-    {
-      title: "Harry Potter and the Sorcerer's stone",
-      author: 'J.K. Rowling',
-    },
-    {
-      title: 'Jurassic Park',
-      author: 'Michael Crichton - foo',
-    },
-];
-
-// The resolvers
 const resolvers = {
-Query: { books: () => books },
+  // Book: {
+  //   author: (parent, _args, _context, _info) => {
+  //     return parent.getAuthor();
+  //   }
+  // },
+  Query: {
+    books: (_parent, _args, { db }, _info) => {
+      return db.book.findAll();
+    }
+  }//,
+  // Mutation: {
+  //   createBook: (_parent, { title, author }, { db }, _info) => {
+  //       return db.book.create({
+  //         title: title,
+  //         author: author
+  //       });
+  //     },
+  //   updateBook: (_parent, { title, author }, { db }, _info) => {
+  //       return db.book.update({
+  //         title: title,
+  //         author: author
+  //       }, {
+  //           where: {
+  //             title: title
+  //           }
+  //         });
+  //     },
+  //   deletePost: (_parent, { title }, { db }, _info) => {
+  //       return db.post.destroy({
+  //         where: {
+  //           title: title
+  //         }
+  //       });
+  //     }
+  // }
 };
 
-module.exports = resolvers;
+// // Some fake data
+// const books = [
+//     {
+//       title: "Harry Potter and the Sorcerer's stone",
+//       author: 'J.K. Rowling',
+//     },
+//     {
+//       title: 'Jurassic Park',
+//       author: 'Michael Crichton - foo',
+//     },
+// ];
+
+// // The resolvers
+// const resolvers = {
+//     Query: {
+//       books: () => books
+//     },
+// };
+
+export default resolvers;
