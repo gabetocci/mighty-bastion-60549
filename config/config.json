@@ -1,16 +1,16 @@
 {
     "development": {
         "username" : "postgres",
-        "password" : "postgres",
+        "password" : "password",
         "database" : "demodb",
         "host"     : "127.0.0.1",
         "dialect"  : "postgres",
         "port"     : "5432"
     },
     "production": {
-        "username" : "postgres",
-        "password" : null,
-        "database" : "local",
+        "username" : "unused-username-prod",
+        "password" : "unused-password-prod",
+        "database" : "unused-db-prod",
         "host"     : "127.0.0.1",
         "dialect"  : "postgres",
         "port"     : "5432"

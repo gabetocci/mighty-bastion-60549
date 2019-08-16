@@ -1,17 +1,6 @@
-// // The GraphQL schema in string form
-// const typeDefs = `
-//   type Query {
-//     books: [Book]
-//   }
-//   type Book {
-//     title: String,
-//     author: String
-//   }
-// `;
-// export default typeDefs;
-
-export default `
+const typeDefs = `
   type Book {
+    id: ID!,
     title: String,
     author: String
   }
@@ -19,4 +8,4 @@ export default `
     books: [Book]
   }
 `;
-
+export default typeDefs;

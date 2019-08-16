@@ -1,16 +1,21 @@
 export default (sequelize, DataTypes) => {
     const Book = sequelize.define('book', {
-    //   id: {
-    //     type: DataTypes.INTEGER,
-    //     primaryKey: true,
-    //     autoIncrement: true,
-    //   },
-      title: DataTypes.STRING,
-      author: DataTypes.TEXT,
-    },
-    {
-      freezeTableName: true,
-    });
+      title: {
+        type: DataTypes.STRING
+      },
+      author: {
+        type: DataTypes.STRING
+      },
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+      }
+    }, { timestamps: false }
+  );
+
+    Book.associate = function(models) {
+      // associations can be defined here
+    };
 
     return Book;
   };
