@@ -1,8 +1,8 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
 
-import typeDefs from "./schema";
-import resolvers from "./resolvers";
+import resolvers from "./gql/resolvers";
+import typeDefs from "./gql/schema";
 import db from "./models";
 
 const server = new ApolloServer({
