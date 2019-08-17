@@ -5,35 +5,34 @@ const resolvers = {
   //   }
   // },
   Query: {
-    books: (_parent, _args, { db }, _info) => {
+    books: (parent, args, { db }) => {
       return db.book.findAll();
     }
-  }//,
-  // Mutation: {
-  //   createBook: (_parent, { title, author }, { db }, _info) => {
-  //       return db.book.create({
-  //         title: title,
-  //         author: author
-  //       });
-  //     },
-  //   updateBook: (_parent, { title, author }, { db }, _info) => {
-  //       return db.book.update({
-  //         title: title,
-  //         author: author
-  //       }, {
-  //           where: {
-  //             title: title
-  //           }
-  //         });
-  //     },
-  //   deletePost: (_parent, { title }, { db }, _info) => {
-  //       return db.post.destroy({
-  //         where: {
-  //           title: title
-  //         }
-  //       });
-  //     }
-  // }
+  },
+  Mutation: {
+    createBook: (parent, args, { db }, _info) => {
+        return db.book.create({
+          title: args.title,
+          author: args.author
+        });
+    }},
+    // updateBook: (_parent, { id, title, author }, { db }, _info) => {
+    //     return db.book.update({
+    //       title: title,
+    //       author: author
+    //     }, {
+    //         where: {
+    //           id: id
+    //         }
+    //     });
+    // },
+    // deleteBook: (_parent, { id }, { db }, _info) => {
+    //     return db.book.destroy({
+    //       where: {
+    //         id: id
+    //       }
+    //     });
+    // }
 };
 
 export default resolvers;

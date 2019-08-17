@@ -8,7 +8,8 @@ export default (sequelize, DataTypes) => {
       },
       id: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
       }
     }, { timestamps: false }
   );
