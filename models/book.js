@@ -11,8 +11,9 @@ export default (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       }
-    }, { timestamps: false }
-  );
+    }, {
+      timestamps: false
+    });
 
     Book.associate = function(models) {
       // associations can be defined here

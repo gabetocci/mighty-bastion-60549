@@ -6,14 +6,14 @@ const typeDefs = `
   }
   type Query {
     books: [Book]
+    book: [Book]
   }
 
   type Mutation {
     createBook(title: String, author:String!): Book!
+    updateBookAuthor(id: ID!, author:String!): Book!
+    deleteBook(id: ID!): Book!
   }
 
 `;
 export default typeDefs;
-
-//     updateBook(id: ID!, title: String, author:String!): [Int!]!
-//     deleteBook(id: ID!): Int!
