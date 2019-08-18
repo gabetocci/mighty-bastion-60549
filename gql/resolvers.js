@@ -13,27 +13,30 @@ const resolvers = {
     }
   },
   Mutation: {
-    createBook: (parent, args, { db }) => {
+    createBook (parent, args, { db }) {
       return db.book.create({
         title: args.title,
         author: args.author
       });
     },
-    updateBookAuthor: (parent, args, { db }) => {
-      return db.book.update({
+    async updateBookAuthor (parent, args, { db }) {
+      await db.book.update({
         author: args.author
       }, {
         where: {
           id: args.id
         }
       });
+      return await db.book.findByPk(args.id);
     },
-    deleteBook: (parent, args, { db }) => {
-      return db.book.destroy({
+    async deleteBook (parent, args, { db }) {
+      const deleted_book = await db.book.findByPk(args.id);
+      await db.book.destroy({
         where: {
           id: args.id
         }
       });
+      return deleted_book;
     }
   }
 };
