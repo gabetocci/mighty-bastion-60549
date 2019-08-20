@@ -55,3 +55,4 @@ sudo service postgresql start
 sudo passwd postgres
 su - postgres
 psql -c "ALTER USER postgres WITH PASSWORD 'password';"
+createdb demodb
