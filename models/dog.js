@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
     });
 
     Dog.associate = function(models) {
-      Dog.hasOne(Breed);
+      Dog.hasOne(Breed, {as: 'breed_id'});
     };
     return Dog;
   };
