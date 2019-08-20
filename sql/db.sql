@@ -1,8 +1,8 @@
-DROP TABLE addresses CASCADE;
-DROP TABLE breeds CASCADE;
-DROP TABLE incidents CASCADE;
-DROP TABLE dog_owners CASCADE;
-DROP TABLE dogs CASCADE;
+DROP TABLE IF EXISTS addresses CASCADE;
+DROP TABLE IF EXISTS breeds CASCADE;
+DROP TABLE IF EXISTS incidents CASCADE;
+DROP TABLE IF EXISTS dog_owners CASCADE;
+DROP TABLE IF EXISTS dogs CASCADE;
 
 -- reference tables
 CREATE TABLE addresses (
@@ -13,13 +13,15 @@ CREATE TABLE addresses (
    city TEXT,
    state TEXT,
    zip TEXT,
-   timestamp TIMESTAMPTZ
+   created_at TIMESTAMPTZ,
+   updated_at TIMESTAMPTZ
 );
 
 CREATE TABLE breeds (
    id SERIAL PRIMARY KEY NOT NULL,
    name TEXT,
-   timestamp TIMESTAMPTZ
+   created_at TIMESTAMPTZ,
+   updated_at TIMESTAMPTZ
 );
 
 -- app tables
@@ -30,7 +32,8 @@ CREATE TABLE dogs (
    owner_id INT,
    breed_id INT,
    address_id INT,
-   timestamp TIMESTAMPTZ
+   created_at TIMESTAMPTZ,
+   updated_at TIMESTAMPTZ
 );
 
 CREATE TABLE dog_owners (
@@ -38,7 +41,8 @@ CREATE TABLE dog_owners (
    name TEXT,
    age INT,
    address_id INT,
-   timestamp TIMESTAMPTZ
+   created_at TIMESTAMPTZ,
+   updated_at TIMESTAMPTZ
 );
 
 CREATE TABLE incidents (
@@ -48,7 +52,8 @@ CREATE TABLE incidents (
    incident_timestamp TIMESTAMPTZ,
    address_id INT,
    dog_id INT,
-   timestamp TIMESTAMPTZ
+   created_at TIMESTAMPTZ,
+   updated_at TIMESTAMPTZ
 );
 
 -- constraints

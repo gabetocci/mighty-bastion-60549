@@ -41,3 +41,9 @@ For more information about using Node.js on Heroku, see these Dev Center article
 `$sudo service postgresql start`
 `CREATE TABLE book ( title varchar(50), author varchar(50) );`
 
+### TODO
+Add to Dog Attributes
+- color
+- size
+Change dog_owner to person
+- associate Dog.hasMany(Person, through: 'DogOwner')
