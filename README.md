@@ -47,3 +47,11 @@ Add to Dog Attributes
 - size
 Change dog_owner to person
 - associate Dog.hasMany(Person, through: 'DogOwner')
+
+sudo apt-get update
+sudo apt-get install postgresql
+sudo service postgresql start
+
+sudo passwd postgres
+su - postgres
+psql -c "ALTER USER postgres WITH PASSWORD 'password';"
