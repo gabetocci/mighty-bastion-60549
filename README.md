@@ -56,3 +56,7 @@ sudo passwd postgres
 su - postgres
 psql -c "ALTER USER postgres WITH PASSWORD 'password';"
 createdb demodb
+
+-modularize schema and respolvers:
+https://blog.apollographql.com/modularizing-your-graphql-schema-code-d7f71d5ed5f2
+https://github.com/andrecalvo/GraphQL-Apollo-Node-Express-Postgres-Sequelize-starter

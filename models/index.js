@@ -37,12 +37,14 @@ readdirSync(__dirname)
     console.log("Imported Model: "+ model.name);
   });
 
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+// build model associations
+Object.keys(db).forEach(modelName => {
+    if (db[modelName].associate) {
+      db[modelName].associate(db);
+    }
+  });
 
+// no idea what these do
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

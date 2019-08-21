@@ -1,16 +1,14 @@
 const resolvers = {
 
-  DogOwner: {
+  Person: {
     dogs (parent, args, { db }) {
-      return db.dog.findAll({
-        where: { owner_id: parent.id }
-      });
+      return parent.getDogs();
     }
   },
 
   Dog: {
-    dog_owner (parent, args, { db }) {
-      return parent.getDogOwner();
+    person (parent, args, { db }) {
+      return parent.getPerson();
     },
     breed (parent, args, { db }) {
       return parent.getBreed();
@@ -20,12 +18,12 @@ const resolvers = {
   //
   Query: {
 
-    // Book
-    books (parent, args, { db }) {
-        return db.book.findAll();
+    // Person (Dog Owner)
+    people (parent, args, { db }) {
+      return db.person.findAll();
     },
-    book (parent, args, { db }) {
-        return db.book.findByPk(args.id)
+    person (parent, args, { db }) {
+      return db.person.findByPk(args.id)
     },
 
     // Dog
@@ -36,44 +34,18 @@ const resolvers = {
       return db.dog.findByPk(args.id)
     },
 
-    // Dog Owner
-    dog_owners (parent, args, { db }) {
-      return db.dog_owner.findAll();
+    // Breed
+    breeds (parent, args, { db }) {
+      return db.breed.findAll();
     },
-    dog_owner (parent, args, { db }) {
-      return db.dog_owner.findByPk(args.id)
+    breed (parent, args, { db }) {
+      return db.breed.findByPk(args.id)
     },
+
   },
 
   //
   Mutation: {
-
-    // Book
-    createBook (parent, args, { db }) {
-      return db.book.create({
-        title: args.title,
-        author: args.author
-      });
-    },
-    async updateBookAuthor (parent, args, { db }) {
-      await db.book.update({
-        author: args.author
-      }, {
-        where: {
-          id: args.id
-        }
-      });
-      return await db.book.findByPk(args.id);
-    },
-    async deleteBook (parent, args, { db }) {
-      const deleted_book = await db.book.findByPk(args.id);
-      await db.book.destroy({
-        where: {
-          id: args.id
-        }
-      });
-      return deleted_book;
-    },
 
     // Dog
     createDog (parent, args, { db }) {
@@ -93,17 +65,17 @@ const resolvers = {
           id: args.id
         }
       });
-      return await db.breed.findByPk(args.id);
+      return await db.dog.findByPk(args.id);
     },
-    async updateDogOwner (parent, args, { db }) {
+    async updateDogPerson (parent, args, { db }) {
       await db.dog.update({
-        owner_id: args.owner_id
+        person_id: args.person_id
       }, {
         where: {
           id: args.id
         }
       });
-      return await db.breed.findByPk(args.id);
+      return await db.dog.findByPk(args.id);
     },
     async updateBreed (parent, args, { db }) {
       await db.dog.update({
@@ -125,32 +97,32 @@ const resolvers = {
       return deleted_dog;
     },
 
-    // Dog Owner
-    createDogOwner (parent, args, { db }) {
-      return db.dog_owner.create({
+    // Person (Dog Owner)
+    createPerson (parent, args, { db }) {
+      return db.person.create({
         name: args.name,
         age: args.age,
         address_id: args.address_id
       });
     },
-    async updateDogOwnerName (parent, args, { db }) {
-      await db.dog_owner.update({
+    async updatePersonName (parent, args, { db }) {
+      await db.person.update({
         name: args.name
       }, {
         where: {
           id: args.id
         }
       });
-      return await db.dog_owner.findByPk(args.id);
+      return await db.person.findByPk(args.id);
     },
-    async deleteDogOwner (parent, args, { db }) {
-      const deleted_dog_owner = await db.dog_owner.findByPk(args.id);
-      await db.dog_owner.destroy({
+    async deletePerson (parent, args, { db }) {
+      const deleted_person = await db.person.findByPk(args.id);
+      await db.person.destroy({
         where: {
           id: args.id
         }
       });
-      return deleted_dog_owner;
+      return deleted_person;
     },
 
     // Breed

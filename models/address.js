@@ -14,16 +14,12 @@ export default (sequelize, DataTypes) => {
     }, {
       timestamp: true,
       underscored: true
-    //   ,name: {
-    //     singular: 'address',
-    //     plural: 'addresses',
-    //   }
     });
 
 
 
     Address.associate = function(models) {
-      // associations can be defined here
+
     };
 
     return Address;

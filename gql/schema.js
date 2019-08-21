@@ -1,22 +1,16 @@
 const typeDefs = `
-  type Book {
-    id: ID!,
-    title: String,
-    author: String
-  }
-
   type Dog {
     id: ID!,
     name: String,
     age: Int,
-    owner_id: ID,
+    person_id: ID,
     breed_id: ID,
     address_id: ID,
-    dog_owner: DogOwner,
+    person: Person,
     breed: Breed
   }
 
-  type DogOwner {
+  type Person {
     id: ID!,
     name: String,
     age: Int,
@@ -30,33 +24,26 @@ const typeDefs = `
   }
 
   type Query {
-    books: [Book]
-    book(id: ID!): Book!
-
     dogs: [Dog]
-    dog(id: ID!): Dog!
+    dog (id: ID!): Dog!
 
-    dog_owners: [DogOwner]
-    dog_owner(id: ID!): DogOwner!
+    people: [Person]
+    person (id: ID!): Person!
 
     breeds: [Breed]
-    breed(id: ID!): Breed!
+    breed (id: ID!): Breed!
   }
 
   type Mutation {
-    createBook(title: String, author: String!): Book!
-    updateBookAuthor(id: ID!, author: String!): Book!
-    deleteBook(id: ID!): Book!
-
-    createDog(name: String, age: Int, owner_id: Int, breed_id: Int, address_id: Int): Dog!
+    createDog(name: String, age: Int, person_id: Int, breed_id: Int, address_id: Int): Dog!
     updateDogName(id: ID!, name: String): Dog!
-    updateDogOwner(id: ID!, owner_id: Int!): Dog!
+    updateDogPerson(id: ID!, person_id: Int!): Dog!
     updateBreed(id: ID!, breed_id: Int!): Dog!
     deleteDog(id: ID!): Dog!
 
-    createDogOwner(name: String, age: Int, address_id: Int): DogOwner!
-    updateDogOwnerName(id: ID!, name: String): DogOwner!
-    deleteDogOwner(id: ID!): DogOwner!
+    createPerson(name: String, age: Int, address_id: Int): Person!
+    updatePersonName(id: ID!, name: String): Person!
+    deletePerson(id: ID!): Person!
 
     createBreed(name: String): Breed!
     updateBreedName(id: ID!, name: String): Breed!

@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const DogOwner = sequelize.define('dog_owner', {
+    const Person = sequelize.define('person', {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -13,10 +13,9 @@ export default (sequelize, DataTypes) => {
       underscored: true
     });
 
-//    DogOwner.associate = function(models) {
-    // DogOwner.associate = (models) => {
-    //     DogOwner.hasMany(models.Dog);
-    // };
+    Person.associate = function(models) {
+        Person.hasMany(models.dog);
+    };
 
-    return DogOwner;
+    return Person;
   };

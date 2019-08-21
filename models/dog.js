@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
       },
       name:       { type: DataTypes.TEXT },
       age:        { type: DataTypes.INTEGER },
-      owner_id:   { type: DataTypes.INTEGER},
+      person_id:  { type: DataTypes.INTEGER},
       breed_id:   { type: DataTypes.INTEGER },
       address_id: { type: DataTypes.INTEGER }
     }, {
@@ -16,26 +16,9 @@ export default (sequelize, DataTypes) => {
     });
 
     Dog.associate = function(models) {
-      Dog.hasOne(Breed, {as: 'breed_id'});
+      Dog.belongsTo(models.breed);
+      Dog.belongsTo(models.person);
+//      Dog.belongsTo(models.address);
     };
     return Dog;
   };
-
-  // class Dog extends Model {}
-  // User.init({
-  //     id: {
-  //       type: DataTypes.INTEGER,
-  //       primaryKey: true,
-  //       autoIncrement: true
-  //     },
-  //     name:       { type: DataTypes.TEXT },
-  //     age:        { type: DataTypes.INTEGER },
-  //     owner_id:   { type: DataTypes.INTEGER},
-  //     breed_id:   { type: DataTypes.INTEGER },
-  //     address_id: { type: DataTypes.INTEGER }
-  // }, {
-  //   sequelize,
-  //   modelName: 'dog'
-  // });
-
-  // Dog.hasOne(Breed);

@@ -12,7 +12,7 @@ export default (sequelize, DataTypes) => {
     });
 
     Breed.associate = (models) => {
-
+        Breed.hasMany(models.dog);
     };
 
     return Breed;
